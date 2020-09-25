@@ -7,6 +7,7 @@ const screen = document.querySelector('.screen-value');
 const resultScreen = document.getElementById('result');
 const sqrt = document.getElementById('sqrt');
 const plmin = document.getElementById('plmin');
+let lastAction = '';
 let result = '';
 let current = '';
 let a = '';
@@ -31,13 +32,7 @@ for (let i = 0; i < operations.length; i++) {
 }
 
 ac.addEventListener('click', function (e) {
-    current = '';
-    screen.value = current;
-    a = '';
-    b = '';
-    action = '';
-    result = '';
-    resultScreen.innerHTML = result;
+    clearAll();
 });
 
 c.addEventListener('click', function (e) {
@@ -49,6 +44,7 @@ c.addEventListener('click', function (e) {
 
 eq.addEventListener('click', function (e) {
     a = onEqPress(a, current, action);
+    result += ' = ' + a + ' ';
     resultScreen.innerHTML = result;
 });
 
@@ -60,11 +56,14 @@ sqrt.addEventListener('click', function (e) {
     optionPress(sqrt.id);
     if (Number(a) > 0) {
         onEqPress(a, a, action);
+        result += ' = ' + screen.value + ' ';
         result = sqrt.innerText + result;
         resultScreen.innerHTML = result;
         result = Math.sqrt(Number(a)).toString();
+        lastAction = (sqrt.id);
     } else {
-        resultScreen.innerHTML = 'Value lower than zero!'
+        resultScreen.innerHTML = 'Value lower than zero!!!'
+        setTimeout(clearAll, 1000);
     }
 })
 
@@ -141,10 +140,13 @@ function optionPress(id) {
         } else {
             b = a;
         }
-        onEqPress(a,b,action);
+        if (lastAction!='eq'){
+            onEqPress(a,b,action);
+        }
         action = id;
         a = screen.value;
         current = '';
+        lastAction = id;
     }
 }
 
@@ -189,6 +191,16 @@ function onEqPress(a, total, action) {
         a = total.toString();
         screen.value = total.toString();
     }
-    result += ' = ' + a + ' ';
+    lastAction = 'eq';
     return a;
+}
+
+const clearAll = () => {
+    current = '';
+    screen.value = current;
+    a = '';
+    b = '';
+    action = '';
+    result = '';
+    resultScreen.innerHTML = result;
 }
