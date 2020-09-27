@@ -53,18 +53,19 @@ screen.addEventListener('oninput', function (e) {
 })
 
 sqrt.addEventListener('click', function (e) {
-    optionPress(sqrt.id);
+    a = current;
+    action = sqrt.id;
     if (Number(a) > 0) {
         onEqPress(a, a, action);
         result += ' = ' + screen.value + ' ';
         result = sqrt.innerText + result;
         resultScreen.innerHTML = result;
         result = Math.sqrt(Number(a)).toString();
-        lastAction = (sqrt.id);
     } else {
         resultScreen.innerHTML = 'Value lower than zero!!!'
         setTimeout(clearAll, 1000);
     }
+    console.log('Операция sqrt   a = '+ a + ' current = '+ current + ' action = '+ action);
 })
 
 plmin.addEventListener('click', function (e) {
@@ -148,6 +149,9 @@ function optionPress(id) {
         current = '';
         lastAction = id;
     }
+    if (id === sqrt.id){
+        console.log('Операция eq   a = '+ a + ' current = '+ current + ' action = '+ action);
+    }
 }
 
 function onEqPress(a, total, action) {
@@ -185,12 +189,15 @@ function onEqPress(a, total, action) {
         total = Math.sqrt(a);
         a = total.toString();
         screen.value = total.toString();
+        current = a;
+        console.log('Операция eq   a = '+ a + ' current = '+ current + ' action = '+ action);
     }
     if (action === 'expo') {
         total = Math.pow(a, b);
         a = total.toString();
         screen.value = total.toString();
     }
+
     lastAction = 'eq';
     return a;
 }
