@@ -53,6 +53,7 @@ screen.addEventListener('oninput', function (e) {
 })
 
 sqrt.addEventListener('click', function (e) {
+    current = screen.value;
     a = current;
     action = sqrt.id;
     if (Number(a) > 0) {
