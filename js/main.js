@@ -165,25 +165,21 @@ function onEqPress(a, total, action) {
         }
         a = total.toString();
         screen.value = total.toString();
-        current = a;
     }
     if (action === 'minus') {
         total = Number(a) - Number(b);
         a = total.toString();
         screen.value = total.toString();
-        current = a;
     }
     if (action === 'multiply') {
         total = Number(a) * Number(b);
         a = total.toString();
         screen.value = total.toString();
-        current = a;
     }
     if (action === 'divide') {
         total = Number(a) / Number(b);
         a = total.toString();
         screen.value = total.toString();
-        current = a;
     }
     if (action === 'sqrt') {
         total = Math.sqrt(a);
@@ -195,7 +191,6 @@ function onEqPress(a, total, action) {
         total = Math.pow(a, b);
         a = total.toString();
         screen.value = total.toString();
-        current = a;
     }
 
     lastAction = 'eq';
