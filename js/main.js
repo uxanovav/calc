@@ -43,6 +43,9 @@ c.addEventListener('click', function (e) {
 });
 
 eq.addEventListener('click', function (e) {
+    if (lastAction === 'eq'){
+        result += a + ' ' + serchOps(action) + ' ' + b;
+    }
     a = onEqPress(a, current, action);
     result += ' = ' + a + ' ';
     resultScreen.innerHTML = result;
@@ -135,14 +138,14 @@ function numberPress(id) {
 }
 
 function optionPress(id) {
-    if (current !== ''){
+    if (current !== '') {
         if (current !== a) {
             b = current;
         } else {
             b = a;
         }
-        if (lastAction!='eq'){
-            onEqPress(a,b,action);
+        if (lastAction != 'eq') {
+            onEqPress(a, b, action);
         }
         action = id;
         a = screen.value;
@@ -206,4 +209,20 @@ const clearAll = () => {
     action = '';
     result = '';
     resultScreen.innerHTML = result;
+}
+
+const serchOps = (action) =>
+{
+    switch (action){
+        case 'minus':
+            return '-';
+        case 'plus':
+            return '+';
+        case 'multiply':
+            return '*';
+        case 'divide':
+            return '/';
+        case 'expo':
+            return '↑';
+    }
 }
