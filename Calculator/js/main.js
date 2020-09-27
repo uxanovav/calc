@@ -134,7 +134,7 @@ function numberPress(id) {
 }
 
 function optionPress(id) {
-    if (current != ''){
+    if (current !== ''){
         if (current !== a) {
             b = current;
         } else {
