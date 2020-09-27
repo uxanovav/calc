@@ -65,7 +65,6 @@ sqrt.addEventListener('click', function (e) {
         resultScreen.innerHTML = 'Value lower than zero!!!'
         setTimeout(clearAll, 1000);
     }
-    console.log('Операция sqrt   a = '+ a + ' current = '+ current + ' action = '+ action);
 })
 
 plmin.addEventListener('click', function (e) {
@@ -149,9 +148,6 @@ function optionPress(id) {
         current = '';
         lastAction = id;
     }
-    if (id === sqrt.id){
-        console.log('Операция eq   a = '+ a + ' current = '+ current + ' action = '+ action);
-    }
 }
 
 function onEqPress(a, total, action) {
@@ -169,33 +165,37 @@ function onEqPress(a, total, action) {
         }
         a = total.toString();
         screen.value = total.toString();
+        current = a;
     }
     if (action === 'minus') {
         total = Number(a) - Number(b);
         a = total.toString();
         screen.value = total.toString();
+        current = a;
     }
     if (action === 'multiply') {
         total = Number(a) * Number(b);
         a = total.toString();
         screen.value = total.toString();
+        current = a;
     }
     if (action === 'divide') {
         total = Number(a) / Number(b);
         a = total.toString();
         screen.value = total.toString();
+        current = a;
     }
     if (action === 'sqrt') {
         total = Math.sqrt(a);
         a = total.toString();
         screen.value = total.toString();
         current = a;
-        console.log('Операция eq   a = '+ a + ' current = '+ current + ' action = '+ action);
     }
     if (action === 'expo') {
         total = Math.pow(a, b);
         a = total.toString();
         screen.value = total.toString();
+        current = a;
     }
 
     lastAction = 'eq';
