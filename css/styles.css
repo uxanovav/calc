@@ -66,7 +66,7 @@ input::-webkit-input-placeholder { color: rgb(40, 43, 40);; }
     "four five six multiply"
     "one two three  plus"
     "zzero dott equ minus"
-    "plmin perc result result";
+    "plmin result result result";
     grid-gap: 1vw;
 }
 
@@ -217,7 +217,7 @@ input::-webkit-input-placeholder { color: rgb(40, 43, 40);; }
     text-align: left;
     padding-left: 5px ;
     padding-top: 5px;
-    height: 70px;
+    height: 78px;
     background-color: rgb(44, 39, 39);
     font-size: 22px;
     border-radius: 3%;

@@ -122,9 +122,15 @@ function numberPress(id) {
             result += '9';
             break;
         case 'zzero':
-            current += '0';
-            result += '0';
-            break;
+            if (current === ''){
+                current += '0.';
+                result += '0.';
+                break;
+            } else {
+                current += '0';
+                result += '0';
+                break;
+            }
         case 'dott':
             if (current.includes('.') || current.length === 0) {
                 break;
